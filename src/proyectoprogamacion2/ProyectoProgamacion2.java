@@ -2,20 +2,26 @@
 package proyectoprogamacion2;
 
 import java.util.Scanner;
-
+import java.util.Random;
 
 public class ProyectoProgamacion2 {
 
    
     public static void main(String[] args) {
- 
+ Player jugador=new Player();
         Scanner leer= new Scanner(System.in);//Scanner para leer nextInt
           Scanner re=new Scanner(System.in);//Scanner para leer nextLine
+          Random ran=new Random();
+          int max=0;
+          int min=0;
             int opcion=0;
             int opcionMenu=0;
             int salir=0;
+            int end=0;//variable que el menu principal regrese despues de terminar un proceso
             String usuario="";
             String contra="";
+            String jugador2="";
+            int noEncontrado=0;//define si el usuario ingresado para el jugador 2 no existe
             int x=0;//Para determinar la posicion de la creacion del NOMBRE de un usuario en el arreglo y para encontrar usuarios ya ingresados
             int z=0;//Para determinar la posicion de la creacion de la Contrasena de un usuario en el arreglo
             int b = 0;//variable para identificar el primer ingreso
@@ -37,7 +43,8 @@ public class ProyectoProgamacion2 {
                
                switch (opcion){
                    case 1:
-                       if(z == 0){
+                       v=0;
+                       if(jugador.player.isEmpty()){
                            System.out.println("No hay jugadores creados, proceda a crear uno");
                            break;
                        }
@@ -45,49 +52,39 @@ public class ProyectoProgamacion2 {
                        usuario=re.nextLine();
                        for(int f = 0; f<x;f++){
                            tupe++;
-                           if(usuarios[f].equals(usuario)){
+                           if(jugador.player.get(f).equals(usuario)){
                                v++;
                                break;
                            }
                        }
                        if(v == 0){
                            System.out.println("Ese usuario no existe");
+                           ingresa=0;
                            break;
                        }
                        System.out.println("Ingrese su contraseña: ");
                        contra=re.nextLine();
-                       if(contras[tupe-1].equals(contra)){
+                       if(jugador.password.get(tupe-1).equals(contra)){
                            System.out.println("La contra es correcta");
                            ingresa=1;
-                       }else
+                       }else{
                            System.out.println("La contra es incorrecta");
-                       
+                       ingresa=0;
+                       }
                        break;
                        
                    case 2:
-                     if(b == 0){
-                                                  System.out.println("Ingrese un nombre de usuario:");
-                       
-                       usuarios[b] = re.nextLine();
-                 
-                       System.out.println("Ingrese su contraseña: ");
-                       
-                       contras[b] = re.nextLine();
-                       ingresa=1;
-                        b++;
-                        x++;
-                        z++;
-                       break;
-                       }
+                     tucu=0;
                        System.out.println("Ingrese un nombre de usuario:");
                                                   
                            
                        
                        
                        String user=re.nextLine();
+                       
                        for(int f=0;f<x;f++){
                            
-                           if(usuarios[f].equals(user)){
+                           if(jugador.player.get(f).equals(user)){
                             tucu = 1;
                                
                            }
@@ -95,13 +92,15 @@ public class ProyectoProgamacion2 {
                        }
                        if(tucu == 1){
                            System.out.println("ESE USUARIO YA EXISTE");
+                           ingresa=0;
                            break;
                        }
-                       usuarios[x] = user;
+                       jugador.setNombre(user);
                        
                        System.out.println("Ingrese su contraseña: ");
                        
-                       contras[z]=re.nextLine();
+                       String Ncontra=re.nextLine();
+                       jugador.setContra(Ncontra);
                        ingresa=1;
                        z++;
                        x++;
@@ -121,35 +120,65 @@ public class ProyectoProgamacion2 {
                
                }while(opcion !=3 && ingresa !=1) ;
                if(ingresa==1){//se ejecuta solo si ingreso normal o con un usuario
+                   do{
                System.out.println("\t***Menu Principal***");
                System.out.println("1. Jugar Ghost"
                        + "\n2. Configuracion"
                        + "\n3. Reportes"
                        + "\n4. Mi Perfil"
-                       + "\n5. Salir"
+                       + "\n5. Cerrar Sesion"
                        + "\n Seleccione una opcion");
                
                opcionMenu=leer.nextInt();
                switch(opcionMenu){
+                   case 1:
+                      
+                        
+                      
+                       
+                       
+                       System.out.println("Ingrese el username del jugador 2:");
+                       jugador2=re.nextLine();
+                       for(String us: jugador.player){
+                           if(jugador2.equals(us)){
+                               System.out.println("Username encontrado!");
+                               noEncontrado=1;
+                           }
+                       }
+                       if(jugador2.equals(usuario)){
+                       System.out.println("Ese usuario es el jugador 1!!!");
+                       break;
+                   }else if(jugador2.equals(jugador.player.get(x-1))){
+                        System.out.println("Ese usuario es el jugador 1!!!");
+                        break;
+                   }
+                   if(noEncontrado==0){
+                               System.out.println("Usuario no existente, ingrese uno ya creado!!!!!");
+                               break;
+                           }else if(noEncontrado==1){
+                              
+                               
+                               for(int f=0;f<2;f++){
+                                   for(int c=1;c<5;c++){
+                                       
+                                   }
+                               }
+                           }
+                   
+                   
                    
                }
+                   }while(end !=1 && opcionMenu !=5);
                }
                else if(opcion==3){//se ejecuta solo si se salio en el menu de inicio
                    opcion=3;
                    opcionMenu=5;
                }
-               switch(opcionMenu){
-                  
-                   
-               
-                   
-                   
-                   
-               }
+             
                
                
                
-           }while(opcion!=3&& opcionMenu!=5);
+           }while(opcion!=3);
         
         
         
