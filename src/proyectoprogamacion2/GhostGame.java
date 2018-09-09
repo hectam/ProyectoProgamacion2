@@ -114,7 +114,7 @@ public class GhostGame {
              System.out.println("Fila");
              cox=leer.nextInt();
              mox=tablero[cox][coy];
-             while(salir != 1){
+             while(salir != 1 || ganador==1){
              if(tableroS[cox][coy].equals("f1")){
                  
                  System.out.println("Donde desea mover su fantasma?");
@@ -123,10 +123,7 @@ public class GhostGame {
                         switch (direccion){
                             case 1:
                                 salir = 1;
-                                if((tablero[cox][coy] == tablero[1][5] || tablero[cox][coy] == tablero[1][0]) && tablero[cox][coy].equals("Bueno1")){
-                                    
-                                    ganador = 1;
-                                }
+                                
                                 if(tablero[cox-1][coy].equals("Bueno")){
                                  System.out.println("Usted se comio a un fantasma bueno");
                              }
@@ -171,6 +168,7 @@ public class GhostGame {
                                  break;
                                  
                              }
+                                   
                               tablero[cox][coy] = " -";
                              tablero[cox+1][coy]= mox;
                              tableroS[cox][coy] = " -";
@@ -182,6 +180,7 @@ public class GhostGame {
                                  salir = 1;
                                   if(tablero[cox][coy] == tablero[0][4] && tablero[cox][coy].equals("Bueno1")){
                                     ganador = 1;
+                                    System.out.println("Usted ah ganao");
                                 }
                                 if(tablero[cox][coy+1].equals("Bueno")){
                                  System.out.println("Usted se comio a un fantasma bueno");
@@ -200,6 +199,7 @@ public class GhostGame {
                                 break;
                                  
                              }
+                                 
                             tablero[cox][coy] = " -";
                              tablero[cox][coy+1]= mox;
                              tableroS[cox][coy] = " -";
@@ -245,10 +245,13 @@ public class GhostGame {
                  System.out.println("Posicion invalida");
                  break;
              }
+             
          }
+             
              for(int f=0;f<6;f++){
          for(int c=0;c<6;c++){
              System.out.print(tableroS[f][c]);
+
          }
          System.out.println("");
               }
@@ -272,10 +275,7 @@ public class GhostGame {
                         switch (direccion){
                             case 1:
                                 salir = 1;
-                                if((tablero[cox][coy] == tablero[1][5] || tablero[cox][coy] == tablero[1][0]) && tablero[cox][coy].equals("Bueno")){
-                                    
-                                    ganador = 1;
-                                }
+                               
                                 if(tablero[cox+1][coy].equals("Bueno1")){
                                  System.out.println("Usted se comio a un fantasma bueno");
                              }
@@ -329,7 +329,7 @@ public class GhostGame {
                                   break;
                              case 3:
                                  salir = 1;
-                                  if(tablero[cox][coy] == tablero[0][4] && tablero[cox][coy].equals("Bueno")){
+                                  if(tablero[cox][coy] == tablero[5][4] && tablero[cox][coy].equals("Bueno")){
                                     ganador = 1;
                                       System.out.println("Usted ah ganao");
                                 }
