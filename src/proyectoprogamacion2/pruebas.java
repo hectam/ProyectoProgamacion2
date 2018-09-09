@@ -20,6 +20,9 @@ public class pruebas {
         Player prueba=new Player();
         
         probar.Tablero();
+        probar.actualizar();
+        probar.movimiento();
+        
         
         do{
        
