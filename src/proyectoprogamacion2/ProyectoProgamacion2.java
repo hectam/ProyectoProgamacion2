@@ -9,6 +9,7 @@ public class ProyectoProgamacion2 {
    
     public static void main(String[] args) {
  Player jugador=new Player();
+ GhostGame logica=new GhostGame();
         Scanner leer= new Scanner(System.in);//Scanner para leer nextInt
           Scanner re=new Scanner(System.in);//Scanner para leer nextLine
           Random ran=new Random();
@@ -21,6 +22,7 @@ public class ProyectoProgamacion2 {
             String usuario="";
             String contra="";
             String jugador2="";
+            String jugador1="";
             int noEncontrado=0;//define si el usuario ingresado para el jugador 2 no existe
             int x=0;//Para determinar la posicion de la creacion del NOMBRE de un usuario en el arreglo y para encontrar usuarios ya ingresados
             int z=0;//Para determinar la posicion de la creacion de la Contrasena de un usuario en el arreglo
@@ -67,6 +69,7 @@ public class ProyectoProgamacion2 {
                        if(jugador.password.get(tupe-1).equals(contra)){
                            System.out.println("La contra es correcta");
                            ingresa=1;
+                           jugador1=usuario;
                        }else{
                            System.out.println("La contra es incorrecta");
                        ingresa=0;
@@ -101,9 +104,11 @@ public class ProyectoProgamacion2 {
                        
                        String Ncontra=re.nextLine();
                        jugador.setContra(Ncontra);
+                       jugador1=user;
                        ingresa=1;
                        z++;
                        x++;
+                       jugador.setpuntuacion(0);
                         
                        break;
                        
@@ -157,15 +162,31 @@ public class ProyectoProgamacion2 {
                                break;
                            }else if(noEncontrado==1){
                               
+                              logica.Tablero();
+                              logica.actualizar();
+                              logica.movimiento(jugador1, jugador2);
+                              
                                
-                               for(int f=0;f<2;f++){
-                                   for(int c=1;c<5;c++){
-                                       
-                                   }
-                               }
+                              
                            }
-                   
-                   
+                   break;
+                   case 2:
+                       System.out.println("Confirguracion: "
+                               + "\n1.Dificultad"
+                               + "\n2.Modo de juego");
+                       int confi=leer.nextInt();
+                       switch (confi){
+                           case 1:
+                               logica.dificultad();
+                               break;
+                           case 2:
+                               logica.Modo();
+                               break;
+                       }
+                       
+                   default:
+                       System.out.println("Ingrese opcion valida");
+                       break;
                    
                }
                    }while(end !=1 && opcionMenu !=5);

@@ -21,7 +21,7 @@ public class pruebas {
         
         probar.Tablero();
         probar.actualizar();
-        probar.movimiento();
+        
         
         
         do{

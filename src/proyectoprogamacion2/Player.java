@@ -19,7 +19,7 @@ public class Player {
     int puntuacion;
     ArrayList<String> password=new ArrayList<String>();
     ArrayList<String> player= new ArrayList<String>();
-    
+    ArrayList puntos=new ArrayList();
     public void setNombre(String nombreJugador){
     Nombre=nombreJugador;
     
@@ -33,6 +33,7 @@ public class Player {
     }
     public void setpuntuacion(int puntuaciones){
         puntuacion=puntuaciones;
+        
     }
     public String getNombre(){
         return Nombre;
@@ -41,11 +42,18 @@ public class Player {
     public String getContra(){
         return Contra;
     }
+    public int getPuntuacion(){
+        return puntuacion;
+        
+    }
     public void Insertar_jugadores(){
         
     
     
 }
+    public void Login(){
+        
+    }
     
     
     
